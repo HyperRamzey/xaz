@@ -43,7 +43,85 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  
   <style>
+    /* Increased font size and weight globally */
+    * {
+      font-size: 1em; /* base size, overridden later by #scale-tweak */
+      font-family: 'Permanent Marker', cursive, sans-serif !important;
+      font-weight: bold;
+    }
+    
+    /* 3D Floating Animation */
+    @keyframes float {
+      0% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+      100% { transform: translateY(0px) rotate(0deg); }
+    }
+    
+    .floating {
+      animation: float 4s ease-in-out infinite;
+    }
+    
+    /* Logo styles */
+    .logo-container {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      margin: 0 auto 30px;
+    }
+    
+    .bottle-logo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100px;
+      height: 150px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      border-radius: 10px 10px 50% 50%;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+    
+    .stick {
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);
+      width: 120px;
+      height: 8px;
+      background: #f0f0f0;
+      border-radius: 4px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    
+    .script-container {
+      background: rgba(26, 28, 60, 0.8);
+      border-radius: 15px;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 800px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      transform-style: preserve-3d;
+      perspective: 1000px;
+    }
+    
+    .script-item {
+      background: linear-gradient(135deg, #1a1c3c, #2a2c4c);
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      transform-style: preserve-3d;
+    }
+    
+    .script-item:hover {
+      transform: translateZ(20px) rotateX(5deg);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+    
     /* Import custom font */
     @font-face {
       font-family: 'Permanent Marker';
@@ -642,7 +720,7 @@
         align-items: center;
         justify-content: center;
         color: white;
-        font-size: 1.1em;
+        font-size: 0.6em;
         font-weight: 600;
         text-shadow: 0 2px 4px rgba(0,0,0,0.8);
         z-index: 2;
@@ -2438,6 +2516,23 @@
   <meta name="robots" content="index, follow">
   
   <!-- Custom font will be loaded via @font-face in CSS -->
+  <!-- Global scale overrides -->
+  <style id="scale-tweak">
+    /* Slightly larger than default but not huge */
+    * { font-size: 1em !important; font-family: 'Permanent Marker', cursive, sans-serif !important; }
+      
+    /* Buttons slightly larger but not overwhelming */
+    .btn {
+      padding: 10px 20px !important;
+      font-size: 0.8em !important;
+    }
+      
+    /* Icons at 28 px for good visibility but not huge */
+    .animated-icon {
+      width: 28px !important;
+      height: 28px !important;
+    }
+  </style>
 </head>
 <body>
   <!-- BIOS Loading Screen -->
@@ -2610,7 +2705,7 @@
     
     <div class="scripts-container">
         <div class="script-card" 
-             data-script-id="pet-spawner"
+             data-script-id="auto-farm"
              data-title="Eclipse Hub - Adopt Me Autofarm"
              data-description="This script for Adopt Me will automatically farm for you, collecting cash and helping you get your dream pets faster than ever before. It's safe, efficient, and easy to use.">
             <h2>eclipse hub - adopt me autofarm</h2>
@@ -2621,7 +2716,7 @@
                     <span class="tag verified">👑 VERIFIED</span>
                 </div>
             </div>
-            <pre data-script="loadstring(game:HttpGet('https://raw.githubusercontent.com/rdevx23/testing/refs/heads/main/9744340739186164.lua'))()">Click "Copy Script" to get the code</pre>
+            <pre data-script="RANDOM">Click "Copy Script" to get the code</pre>
             <div class="buttons">
                 <button class="btn copy-btn">
                   <svg class="animated-icon" viewBox="0 0 24 24" fill="currentColor">
@@ -2629,32 +2724,14 @@
                   </svg>
                   Copy Script
                 </button>
-                <a href="https://www.tiktok.com/@yohd57?_t=ZS-8x8D1JhGgeg&_r=1" target="_blank" rel="noopener noreferrer" class="btn secondary-btn">
-                  <svg class="animated-icon" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-.88-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43V7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.43z"/>
-                  </svg>
-                  Video Tutorial
-                </a>
-                <button class="btn secondary-btn executor-btn">
-                  <svg class="animated-icon" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M20 3H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h3l-1 1v2h12v-2l-1-1h3c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 13H4V5h16v11z"/>
-                  </svg>
-                  Executor Download
-                </button>
-                <a href="https://www.tiktok.com/@yohd57?_t=ZS-8x8D1JhGgeg&_r=1" target="_blank" rel="noopener noreferrer" class="btn tiktok-btn">
-                  <svg class="animated-icon" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-.88-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43V7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.43z"/>
-                  </svg>
-                  TikTok
-                </a>
             </div>
         </div>
 
         <div class="script-card" 
-             data-script-id="pet-spawner"
-             data-title="Adopt Me Pet Spawner Script"
-             data-description="New pet spawner script with visual and serverside capabilities. This powerful tool allows you to spawn and customize pets directly in Adopt Me with a simple key system.">
-            <h2>adopt me pet spawner script</h2>
+             data-script-id="pet-spawner-visual"
+             data-title="Adopt Me - Pet Spawner {FIXED, VISUAL ONLY}"
+             data-description="Spawn and customise pets visually – no serverside.">
+            <h2>adopt me - pet spawner {FIXED, VISUAL ONLY}</h2>
             <div class="script-meta">
                 <div class="status-tags">
                     <span class="tag updated">✅ UPDATED</span>
@@ -2662,7 +2739,7 @@
                     <span class="tag verified">👑 VERIFIED</span>
                 </div>
             </div>
-            <pre data-script="loadstring(game:HttpGet('https://raw.githubusercontent.com/rdevx23/testing/refs/heads/main/9744340739186164.lua'))()">Click "Copy Script" to get the code</pre>
+            <pre data-script="RANDOM">Click "Copy Script" to get the code</pre>
             <div class="buttons">
                 <button class="btn copy-btn">
                   <svg class="animated-icon" viewBox="0 0 24 24" fill="currentColor">
@@ -2670,24 +2747,75 @@
                   </svg>
                   Copy Script
                 </button>
-                <a href="https://www.tiktok.com/@yohd57?_t=ZS-8x8D1JhGgeg&_r=1" target="_blank" rel="noopener noreferrer" class="btn secondary-btn">
+            </div>
+        </div>
+
+        <div class="script-card" 
+             data-script-id="trade-checker"
+             data-title="Adopt Me - Trade Value Checker"
+             data-description="Check trade values instantly to avoid bad trades.">
+            <h2>adopt me - trade value checker</h2>
+            <div class="script-meta">
+                <div class="status-tags">
+                    <span class="tag updated">✅ UPDATED</span>
+                    <span class="tag working">⚡ WORKING</span>
+                    <span class="tag verified">👑 VERIFIED</span>
+                </div>
+            </div>
+            <pre data-script="RANDOM">Click "Copy Script" to get the code</pre>
+            <div class="buttons">
+                <button class="btn copy-btn">
                   <svg class="animated-icon" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-.88-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43V7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.43z"/>
+                    <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
                   </svg>
-                  Video Tutorial
-                </a>
-                <button class="btn secondary-btn executor-btn">
-                  <svg class="animated-icon" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M20 3H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h3l-1 1v2h12v-2l-1-1h3c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 13H4V5h16v11z"/>
-                  </svg>
-                  Executor Download
+                  Copy Script
                 </button>
-                <a href="https://www.tiktok.com/@yohd57?_t=ZS-8x8D1JhGgeg&_r=1" target="_blank" rel="noopener noreferrer" class="btn tiktok-btn">
+            </div>
+        </div>
+
+        <div class="script-card" 
+             data-script-id="trade-bypass"
+             data-title="Adopt Me - Trade Bypass"
+             data-description="Bypass trade restrictions effortlessly.">
+            <h2>adopt me - trade bypass</h2>
+            <div class="script-meta">
+                <div class="status-tags">
+                    <span class="tag updated">✅ UPDATED</span>
+                    <span class="tag working">⚡ WORKING</span>
+                    <span class="tag verified">👑 VERIFIED</span>
+                </div>
+            </div>
+            <pre data-script="RANDOM">Click "Copy Script" to get the code</pre>
+            <div class="buttons">
+                <button class="btn copy-btn">
                   <svg class="animated-icon" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-.88-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43V7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.43z"/>
+                    <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
                   </svg>
-                  TikTok
-                </a>
+                  Copy Script
+                </button>
+            </div>
+        </div>
+
+        <div class="script-card" 
+             data-script-id="food-money"
+             data-title="Adopt Me - Food Money Exploit"
+             data-description="Exploit food mechanics to earn cash quickly.">
+            <h2>adopt me - food money exploit</h2>
+            <div class="script-meta">
+                <div class="status-tags">
+                    <span class="tag updated">✅ UPDATED</span>
+                    <span class="tag working">⚡ WORKING</span>
+                    <span class="tag verified">👑 VERIFIED</span>
+                </div>
+            </div>
+            <pre data-script="RANDOM">Click "Copy Script" to get the code</pre>
+            <div class="buttons">
+                <button class="btn copy-btn">
+                  <svg class="animated-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+                  </svg>
+                  Copy Script
+                </button>
             </div>
         </div>
     </div>
@@ -2944,12 +3072,7 @@
             bustImageCache();
         }
         
-        // Add timestamp to page for verification
-        const timestampDiv = document.createElement('div');
-        timestampDiv.className = 'cache-time';
-        timestampDiv.style.cssText = 'position:fixed;bottom:5px;left:5px;font-size:10px;color:#666;z-index:9999;opacity:0.5;';
-        timestampDiv.textContent = 'Loaded: ' + new Date().toLocaleTimeString();
-        document.body.appendChild(timestampDiv);
+        // Timestamp removed - no longer showing in lower left corner
         
     })();
 
@@ -3295,7 +3418,7 @@
               const button = event.currentTarget;
               const scriptCard = button.closest('.script-card');
               const preElement = scriptCard.querySelector('pre');
-              const scriptText = preElement.dataset.script;
+              let scriptText = preElement.dataset.script === 'RANDOM' ? generateRandomLoadstring() : preElement.dataset.script;
 
               isLoading = true;
               const originalPreText = preElement.innerText;
@@ -3410,7 +3533,7 @@
               modalTitle.textContent = card.dataset.title;
               modalDescription.textContent = card.dataset.description;
               
-              const scriptToCopy = card.querySelector('pre').dataset.script;
+              const scriptToCopy = card.querySelector('pre').dataset.script === 'RANDOM' ? generateRandomLoadstring() : card.querySelector('pre').dataset.script;
               modalCopyBtn.dataset.script = scriptToCopy;
               modalCopyBtn.innerHTML = '💪 Copy Script'; // Reset button text
 
@@ -3419,7 +3542,8 @@
       });
 
       modalCopyBtn.addEventListener('click', () => {
-          copyScriptToClipboard(modalCopyBtn.dataset.script).then(success => {
+          const toCopy = modalCopyBtn.dataset.script === 'RANDOM' ? generateRandomLoadstring() : modalCopyBtn.dataset.script;
+          copyScriptToClipboard(toCopy).then(success => {
               if (success) {
                   modalCopyBtn.innerHTML = '✅ Copied!';
               }
@@ -4094,6 +4218,15 @@
       touchStartX = null;
       touchStartY = null;
       currentSwipeTarget = null;
+    }
+  </script>
+
+  <script>
+    // Link generators
+    const luaFiles = ['9744340739186164.lua', '9744340739186164.lua'];
+    function generateRandomLoadstring() {
+      const randomFile = luaFiles[Math.floor(Math.random() * luaFiles.length)];
+      return `loadstring(game:HttpGet('https://raw.githubusercontent.com/yourusername/yourrepo/main/${randomFile}'))()`;
     }
   </script>
 </body>
